@@ -110,19 +110,24 @@ void push3(Pilha* p, int valor){
 }
 
 int pop(Pilha *p){
-    No * temp = p->raiz;
+
     if(isEmpty(p)){
         printf("Pilha Vazia\n");
         exit(6);
     }
+
     if(p->raiz->prox == NULL){
+        No *aux = p->raiz->prox;
+        p->raiz = NULL;      
+        free(aux);
+    }
+
+    else {
+        No * temp = p->raiz->prox;
+        p->raiz->prox = p->raiz->prox->prox;
         free(temp);
     }
-    while(temp != p->raiz->prox){
-        temp = temp->prox;
-    }
-    p->raiz->prox = temp->prox;
-    free(temp);
+ 
 }
 
 int size(Pilha *p){
@@ -181,6 +186,8 @@ int main() {
     push3(p, 8);
     print(p);
 
+    pop(p);
+    print(p);
     pop(p);
     print(p);
     pop(p);
