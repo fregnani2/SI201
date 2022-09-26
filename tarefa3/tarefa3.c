@@ -108,17 +108,22 @@ void push3(Pilha* p, int valor){
     p->raiz->prox = no;
 
 }
+
 int pop(Pilha *p){
+    No * temp = p->raiz;
     if(isEmpty(p)){
         printf("Pilha Vazia\n");
         exit(6);
     }
-
-    free(p->raiz->prox);
-    return 0;
+    if(p->raiz->prox == NULL){
+        free(temp);
+    }
+    while(temp != p->raiz->prox){
+        temp = temp->prox;
+    }
+    p->raiz->prox = temp->prox;
+    free(temp);
 }
-
-
 
 int size(Pilha *p){
     int size=0;
@@ -178,12 +183,10 @@ int main() {
 
     pop(p);
     print(p);
-    /*char texto[100];
-    strcpy(texto,"(((()))");
-    if(parentesesBalanceados(texto)){
-        printf("Balanceados\n");
-    }else{
-        printf("Não Balanceados\n");
-    }*/
-
+    pop(p);
+    print(p);
+    pop(p);
+    print(p);
+    pop(p);
+    print(p);
 }
