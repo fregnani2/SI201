@@ -116,12 +116,17 @@ int removeLista(Lista *li, int k){
     while(temp->valor != k){
         temp = temp->prox;
     }
-    No * aux = li->ini;
-    while(aux->prox != temp){
-        aux = aux->prox;
+    if(temp == li->ini){
+        free(temp);
+        li->ini = NULL;
+    }else{
+        No * aux = li->ini;
+        while(aux->prox != temp){
+            aux = aux->prox;
+        }
+        aux->prox = temp->prox;
+        free(temp);
     }
-    aux->prox = temp->prox;
-    free(temp);
 }
 
 int removeTodos(Lista *li, int k){
@@ -209,16 +214,9 @@ int main(){
     addOrdenado(li,1);
     addOrdenado(li,2);
     addOrdenado(li,3);
-    addOrdenado(li,12);
-    addOrdenado(li,0);
-    addOrdenado(li,10);
-    addOrdenado(li,12);
-    addOrdenado(li,12);
-    addOrdenado(li,12);
-    addOrdenado(li,12);
 
     print(li);
-    removeTodos(li,12);
+    removeLista(li,3);
     print(li);
 
 }
