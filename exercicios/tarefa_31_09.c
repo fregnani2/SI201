@@ -133,14 +133,19 @@ int removeTodos(Lista *li, int k){
     No * temp = li->ini;
     while(temp != NULL){
         if(temp->valor == k){
-            No * prev = li->ini;
-            while(prev->prox != temp){
-                prev = prev->prox;
-            }
-            No * aux = temp;        
-            prev->prox = temp->prox;
-            free(aux);
-            temp = li->ini;
+            if(temp == li->ini){
+                li->ini = temp->prox;
+                free(temp);
+                temp = li->ini;
+            }else{
+                No * prev = li->ini;
+                while(prev->prox != temp){
+                    prev = prev->prox;
+                }
+                No * aux = temp;        
+                prev->prox = temp->prox;
+                free(aux);
+                temp = li->ini;}
         }
         else{
             temp = temp->prox;
@@ -211,12 +216,15 @@ void concat(Lista *l1, Lista *l2){
 int main(){
     
     Lista * li = newLista();
-    addOrdenado(li,1);
     addOrdenado(li,2);
+    addOrdenado(li,2);
+    addOrdenado(li,3);
+    addOrdenado(li,3);
+    addOrdenado(li,3);
     addOrdenado(li,3);
 
     print(li);
-    removeLista(li,3);
+    removeTodos(li,2);
     print(li);
 
 }

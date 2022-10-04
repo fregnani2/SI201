@@ -1,3 +1,8 @@
+/* GRUPO:
+Bruno Fregnani 254179
+Felipe Costa 254214
+João Rodrigo 254267
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
