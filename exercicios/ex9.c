@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Reverter uma pilha
 typedef struct PilhaSeq{
     int *v;
     int max,top;
@@ -83,6 +84,20 @@ void push(Pilha *p, int valor){
     p->raiz = no;
 }
 
+void inverter(Pilha *p){
+    No* prev = NULL;
+    No* current = p->raiz;
+    No* next = NULL;
+    while (current != NULL) {
+        next = current->prox;
+        current->prox = prev;
+
+        prev = current;
+        current = next;
+    }
+    p->raiz = prev;
+}
+
 int pop(Pilha *p){
     
     if(isEmpty(p)){
@@ -154,7 +169,8 @@ int main() {
     print(p);
     push(p, 8);
     print(p);
-    pop(p);
+
+    inverter(p);
     print(p);
   
 
