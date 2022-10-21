@@ -33,7 +33,6 @@ void printSeq(ListaSeq *li){
 }
 
 //• Faça uma função que encontra a posição da primeira aparição de uma chave k em uma lista sequencial:
-
 int findKeyPosition(ListaSeq *li, int key){
     if(li->v[0] == key){
         return -1;
@@ -48,15 +47,28 @@ int findKeyPosition(ListaSeq *li, int key){
     }
 }
 
+//• Fa¸ca uma fun¸c˜ao que remove a primeira apari¸c˜ao de uma chave k em uma:
+void removeFirstKey(ListaSeq *li, int key){
+    for(int i = 0; i<li->top;i++){
+        if(li->v[i] == key){
+            li->v[i] = li->v[li->top];
+            li->top = li->top  - 1;
+        }
+        
+    }   
+}
+
 int main(){
     ListaSeq * aux = newListaSeq(100);
     aux->v[aux->top++] = 10;
     aux->v[aux->top++] = 20;
     aux->v[aux->top++] = 30;
-    aux->v[aux->top++] = 20;
+    aux->v[aux->top++] = 40;
     printSeq(aux);
     int posicao = 0;
     posicao = findKeyPosition(aux,30);
-    printf("%d", posicao);
+    printf("%d\n", posicao);
+    removeFirstKey(aux,30);
+    printSeq(aux);
 
 }
