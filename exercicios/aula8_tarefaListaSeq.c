@@ -58,5 +58,4 @@ int main(){
     int posicao = 0;
     posicao = findKeyPosition(aux,30);
     printf("%d", posicao);
-
 }
