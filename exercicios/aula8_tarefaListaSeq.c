@@ -70,5 +70,4 @@ int main(){
     printf("%d\n", posicao);
     removeFirstKey(aux,30);
     printSeq(aux);
-
 }
