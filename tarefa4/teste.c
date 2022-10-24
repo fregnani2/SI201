@@ -1,15 +1,20 @@
-#include <stdio.h>  
-#include <conio.h>  
-#include <stdlib.h>     
-#include <time.h>
-int main()  
-{  
-    time_t t1;
-    srand ( (unsigned) time (&t1));
+#include <stdio.h>
+#include <stdlib.h>
+
+char *getString()
+{
+  int size = 4;
+  char * placa = (char *)malloc(sizeof(char)*8); /*Stored in heap segment*/
+  *(placa+0) = 'G'; 
+  *(placa+1) = 'f';  
+  *(placa+2) = 'G';
+  *(placa+3) = '\0';  
     
-    for(int i = 0; i < 10; i ++){
-        int num = (rand() % 26 )+65;
-        printf("%c\n",num);
-    }
-    
+  /* No problem: string remains at str after getstring() returns */    
+  return placa;  
+}     
+int main()
+{
+  printf("%s", getString());  
+  return 0;
 }

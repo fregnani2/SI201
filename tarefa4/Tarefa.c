@@ -85,9 +85,9 @@ int main(int argc, const char * argv[]) {
     /**
      geração de placa aleatória
      */
-    // char * placa = geraPlacaAleatoria();
-    // printf("%s\n",placa);
-    // free(placa);
+    char * placa = geraPlacaAleatoria();
+    printf("%s\n",placa);
+    free(placa);
 
 
     /**
@@ -178,8 +178,13 @@ void testaCaracterAleatorio(){
  */
 char * geraPlacaAleatoria(void){
     char * placa = (char *)malloc(sizeof(char)*8);
-    //seu código vem aqui
-
+    for(int i = 0; i < 7; i++){
+        if(i == 3 || i == 5 || i == 6){
+            *(placa+i) = (rand() % 10) + '0';
+        }
+        else *(placa+i) = caracterAleatorio(); 
+    }
+    *(placa+8) = "\0";
     return placa;
 }
 
