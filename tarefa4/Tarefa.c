@@ -19,7 +19,7 @@ typedef struct Carro{
 
 Carro * newCarro(char *placa, int ano, char * marca,
                  char * modelo){
-    Carro * carro = (Carro *)malloc(sizeof(Carro));
+    Carro * carro = (Carro *)malloc(sizeof(Carro)); 
     strcpy(carro->placa,placa);
     strcpy(carro->marca,marca);
     strcpy(carro->modelo,modelo);
@@ -97,11 +97,11 @@ int main(int argc, const char * argv[]) {
     //                          "Uno");
     // printCarro(carro);
 
-
+    //geraCarroAleatorio();
     /**
      impressão de carro aleatório
      */
-    // printCarro(geraCarroAleatorio());
+    printCarro(geraCarroAleatorio());
 
     /** criação de uma lista */
     // Lista * li = newLista();
@@ -204,7 +204,22 @@ char * geraPlacaAleatoria(void){
 
 Carro * geraCarroAleatorio(void){
     int ano = 2002+rand()%21;
-    //seu código vem aqui.        
+    char *marca[3]= {"fiat","chevrolet","volkswagen"};
+    char *fiat[3] = {"pulse","argo","moby"};
+    char *chevrolet[3] = {"polo","jetta","gol"};
+    char *volkswagen[3] = {"onix","cruze","camaro"};
+    int escolhaMarca = (rand() % 3);
+    if(escolhaMarca == 0){
+        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[escolhaMarca],fiat[rand() % 3]);
+        return carro;
+    }else if(escolhaMarca == 1){
+        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[escolhaMarca],chevrolet[rand() % 3]);
+        return carro;
+    }
+    else {
+        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[escolhaMarca],volkswagen[rand() % 3]);
+        return carro;        
+    }
 }
 
 
