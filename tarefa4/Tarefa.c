@@ -101,15 +101,19 @@ int main(int argc, const char * argv[]) {
     /**
      impressão de carro aleatório
      */
+    
     printCarro(geraCarroAleatorio());
+    
 
     /** criação de uma lista */
-    // Lista * li = newLista();
-    // for(int i=0;i<15;i++){
-    //     addLista(li, geraCarroAleatorio());
-    // }
-    // printLista(li);
+    Lista * li = newLista();
+    for(int i=0;i<2;i++){
+        addLista(li, geraCarroAleatorio());
+    }
+    printf("%s\n",li->v[0]);
+    printLista(li);
 
+    
 
     // printf("Ordenar por:\n");
     // printf("Placa: 0 \n");
@@ -232,7 +236,7 @@ Carro * geraCarroAleatorio(void){
  funções.
  */
 void ordena(Lista *li,int tipo){
-    //seu código vem aqui
+   //seu código vem aqui
 }
 
 
