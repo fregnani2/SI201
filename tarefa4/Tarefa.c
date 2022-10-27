@@ -102,16 +102,29 @@ int main(int argc, const char * argv[]) {
      impressão de carro aleatório
      */
     
-    printCarro(geraCarroAleatorio());
+    //printCarro(geraCarroAleatorio());
     
 
     /** criação de uma lista */
     Lista * li = newLista();
-    for(int i=0;i<2;i++){
+    for(int i=0;i<5;i++){
         addLista(li, geraCarroAleatorio());
     }
-    printf("%s\n",li->v[0]);
+    
     printLista(li);
+    ordena(li,0);
+    printf("Ordenado por placa:\n");
+    printLista(li);
+    ordena(li,1);
+    printf("Ordenado por ano:\n");
+    printLista(li);
+    ordena(li,2);
+    printf("Ordenado por marca:\n");
+    printLista(li);
+    ordena(li,3);
+    printf("Ordenado por modelo:\n");
+    printLista(li);
+
 
     
 
@@ -236,7 +249,56 @@ Carro * geraCarroAleatorio(void){
  funções.
  */
 void ordena(Lista *li,int tipo){
-   //seu código vem aqui
+   
+   switch (tipo){
+    case 0:
+        for(int i=0;i<li->top;i++){
+            for(int j = i+1;j<li->top;j++){
+                if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
+                    Carro * temp = li->v[i];
+                    li->v[i] = li->v[j];
+                    li->v[j] = temp;
+                }
+            }
+        }
+    break;   
+    case 1:
+        for(int i=0;i<li->top;i++){
+            for(int j = i+1;j<li->top;j++){
+                if(li->v[i]->ano > li->v[j]->ano){
+                    Carro * temp = li->v[i];
+                    li->v[i] = li->v[j];
+                    li->v[j] = temp;
+                }
+            }
+        }
+    break;
+    case 2:
+        for(int i=0;i<li->top;i++){
+            for(int j = i+1;j<li->top;j++){
+                if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
+                    Carro * temp = li->v[i];
+                    li->v[i] = li->v[j];
+                    li->v[j] = temp;
+                }
+            }
+        }
+    break;
+    case 3:
+        for(int i=0;i<li->top;i++){
+            for(int j = i+1;j<li->top;j++){
+                if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
+                    Carro * temp = li->v[i];
+                    li->v[i] = li->v[j];
+                    li->v[j] = temp;
+                }
+            }
+        }    
+    break;
+   
+    default:
+    break;
+   }
 }
 
 
