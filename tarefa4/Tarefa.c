@@ -64,6 +64,7 @@ Carro * geraCarroAleatorio(void);
 void ordena(Lista *li,int tipo);
 
 
+
 int main(int argc, const char * argv[]) {
     /**
      Esta função devolve o número de segundos a partir
@@ -248,16 +249,18 @@ Carro * geraCarroAleatorio(void){
  Numero de linhas esperado: 26 linhas divididas em três
  funções.
  */
+void swap(Lista *li, int i, int j){
+    Carro * temp = li->v[i];
+    li->v[i] = li->v[j];
+    li->v[j] = temp;  
+}
 void ordena(Lista *li,int tipo){
-   
    switch (tipo){
     case 0:
         for(int i=0;i<li->top;i++){
             for(int j = i+1;j<li->top;j++){
                 if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
-                    Carro * temp = li->v[i];
-                    li->v[i] = li->v[j];
-                    li->v[j] = temp;
+                    swap(li,i,j);
                 }
             }
         }
@@ -266,9 +269,7 @@ void ordena(Lista *li,int tipo){
         for(int i=0;i<li->top;i++){
             for(int j = i+1;j<li->top;j++){
                 if(li->v[i]->ano > li->v[j]->ano){
-                    Carro * temp = li->v[i];
-                    li->v[i] = li->v[j];
-                    li->v[j] = temp;
+                    swap(li,i,j);
                 }
             }
         }
@@ -277,9 +278,7 @@ void ordena(Lista *li,int tipo){
         for(int i=0;i<li->top;i++){
             for(int j = i+1;j<li->top;j++){
                 if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
-                    Carro * temp = li->v[i];
-                    li->v[i] = li->v[j];
-                    li->v[j] = temp;
+                    swap(li,i,j);
                 }
             }
         }
@@ -288,17 +287,13 @@ void ordena(Lista *li,int tipo){
         for(int i=0;i<li->top;i++){
             for(int j = i+1;j<li->top;j++){
                 if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
-                    Carro * temp = li->v[i];
-                    li->v[i] = li->v[j];
-                    li->v[j] = temp;
+                    swap(li,i,j);
                 }
             }
         }    
     break;
-   
     default:
-    break;
-   }
+    break;}
 }
 
 
