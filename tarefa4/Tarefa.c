@@ -254,48 +254,57 @@ void swap(Lista *li, int i, int j){
     li->v[i] = li->v[j];
     li->v[j] = temp;  
 }
+// void ordena(Lista *li,int tipo){
+//    switch (tipo){
+//     case 0:
+//         for(int i=0;i<li->top;i++){
+//             for(int j = i+1;j<li->top;j++){
+//                 if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
+//                     swap(li,i,j);
+//                 }
+//             }
+//         }
+//     break;   
+//     case 1:
+//         for(int i=0;i<li->top;i++){
+//             for(int j = i+1;j<li->top;j++){
+//                 if(li->v[i]->ano > li->v[j]->ano){
+//                     swap(li,i,j);
+//                 }
+//             }
+//         }
+//     break;
+//     case 2:
+//         for(int i=0;i<li->top;i++){
+//             for(int j = i+1;j<li->top;j++){
+//                 if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
+//                     swap(li,i,j);
+//                 }
+//             }
+//         }
+//     break;
+//     case 3:
+//         for(int i=0;i<li->top;i++){
+//             for(int j = i+1;j<li->top;j++){
+//                 if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
+//                     swap(li,i,j);
+//                 }
+//             }
+//         }    
+//     break;
+//     default:
+//     break;}
+// }
 void ordena(Lista *li,int tipo){
-   switch (tipo){
-    case 0:
-        for(int i=0;i<li->top;i++){
-            for(int j = i+1;j<li->top;j++){
-                if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
-                    swap(li,i,j);
-                }
-            }
+    for(int i=0;i<li->top;i++){
+        for(int j = i+1;j<li->top;j++){
+            if(tipo == 0) {if(strcmp(li->v[i]->placa, li->v[j]->placa)>0) swap(li,i,j);}
+            else if(tipo == 1){if(li->v[i]->ano > li->v[j]->ano) swap(li,i,j);}
+            else if(tipo == 2) {if(strcmp(li->v[i]->marca, li->v[j]->marca)>0) swap(li,i,j);}
+            else if(tipo == 3) {if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0) swap(li,i,j);}
         }
-    break;   
-    case 1:
-        for(int i=0;i<li->top;i++){
-            for(int j = i+1;j<li->top;j++){
-                if(li->v[i]->ano > li->v[j]->ano){
-                    swap(li,i,j);
-                }
-            }
-        }
-    break;
-    case 2:
-        for(int i=0;i<li->top;i++){
-            for(int j = i+1;j<li->top;j++){
-                if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
-                    swap(li,i,j);
-                }
-            }
-        }
-    break;
-    case 3:
-        for(int i=0;i<li->top;i++){
-            for(int j = i+1;j<li->top;j++){
-                if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
-                    swap(li,i,j);
-                }
-            }
-        }    
-    break;
-    default:
-    break;}
 }
-
+}
 
 
 
