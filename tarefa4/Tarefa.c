@@ -254,6 +254,8 @@ void swap(Lista *li, int i, int j){
     li->v[i] = li->v[j];
     li->v[j] = temp;  
 }
+
+//Forma 1
 // void ordena(Lista *li,int tipo){
 //    switch (tipo){
 //     case 0:
@@ -295,6 +297,8 @@ void swap(Lista *li, int i, int j){
 //     default:
 //     break;}
 // }
+
+//Forma2
 void ordena(Lista *li,int tipo){
     for(int i=0;i<li->top;i++){
         for(int j = i+1;j<li->top;j++){
