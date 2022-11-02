@@ -70,7 +70,7 @@ int main(int argc, const char * argv[]) {
      Esta função devolve o número de segundos a partir
      de uma data específica (1/1/1970).
      */
-    //printf("%d\n",(int)time(NULL));
+    printf("%d\n",(int)time(NULL));
     /**
      Esta função cria uma semente aleatória distinta.
      A cada execução, a função rand gerará números
@@ -94,52 +94,36 @@ int main(int argc, const char * argv[]) {
     /**
      Criação de um carro.
      */
-    // Carro * carro = newCarro("ARA1B11", 2018, "Fiat",
-    //                          "Uno");
-    // printCarro(carro);
+    Carro * carro = newCarro("ARA1B11", 2018, "Fiat",
+                             "Uno");
+    printCarro(carro);
 
-    //geraCarroAleatorio();
+    geraCarroAleatorio();
     /**
      impressão de carro aleatório
      */
     
-    //printCarro(geraCarroAleatorio());
+    printCarro(geraCarroAleatorio());
     
 
     /** criação de uma lista */
     Lista * li = newLista();
-    for(int i=0;i<5;i++){
+    for(int i=0;i<100;i++){
         addLista(li, geraCarroAleatorio());
     }
     
-    printLista(li);
-    ordena(li,0);
-    printf("Ordenado por placa:\n");
-    printLista(li);
-    ordena(li,1);
-    printf("Ordenado por ano:\n");
-    printLista(li);
-    ordena(li,2);
-    printf("Ordenado por marca:\n");
-    printLista(li);
-    ordena(li,3);
-    printf("Ordenado por modelo:\n");
-    printLista(li);
-
-
     
-
-    // printf("Ordenar por:\n");
-    // printf("Placa: 0 \n");
-    // printf("Ano: 1 \n");
-    // printf("Marca: 2 \n");
-    // printf("Modelo: 3  \n");
-    // printf("Digite um valor entre 0 e 3:   ");
+    printf("Ordenar por:\n");
+    printf("Placa: 0 \n");
+    printf("Ano: 1 \n");
+    printf("Marca: 2 \n");
+    printf("Modelo: 3  \n");
+    printf("Digite um valor entre 0 e 3:   ");
     
-    // int tipo;
-    // scanf("%d",&tipo);
-    // ordena(li,tipo);
-    // printLista(li);
+    int tipo;
+    scanf("%d",&tipo);
+    ordena(li,tipo);
+    printLista(li);
 
  
     
@@ -249,63 +233,26 @@ Carro * geraCarroAleatorio(void){
  Numero de linhas esperado: 26 linhas divididas em três
  funções.
  */
-void swap(Lista *li, int i, int j){
-    Carro * temp = li->v[i];
-    li->v[i] = li->v[j];
-    li->v[j] = temp;  
-}
 
-//Forma 1
-// void ordena(Lista *li,int tipo){
-//    switch (tipo){
-//     case 0:
-//         for(int i=0;i<li->top;i++){
-//             for(int j = i+1;j<li->top;j++){
-//                 if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
-//                     swap(li,i,j);
-//                 }
-//             }
-//         }
-//     break;   
-//     case 1:
-//         for(int i=0;i<li->top;i++){
-//             for(int j = i+1;j<li->top;j++){
-//                 if(li->v[i]->ano > li->v[j]->ano){
-//                     swap(li,i,j);
-//                 }
-//             }
-//         }
-//     break;
-//     case 2:
-//         for(int i=0;i<li->top;i++){
-//             for(int j = i+1;j<li->top;j++){
-//                 if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
-//                     swap(li,i,j);
-//                 }
-//             }
-//         }
-//     break;
-//     case 3:
-//         for(int i=0;i<li->top;i++){
-//             for(int j = i+1;j<li->top;j++){
-//                 if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
-//                     swap(li,i,j);
-//                 }
-//             }
-//         }    
-//     break;
-//     default:
-//     break;}
-// }
-
-//Forma2
 void ordena(Lista *li,int tipo){
     for(int i=0;i<li->top;i++){
         for(int j = i+1;j<li->top;j++){
-            if(tipo == 0) {if(strcmp(li->v[i]->placa, li->v[j]->placa)>0) swap(li,i,j);}
-            else if(tipo == 1){if(li->v[i]->ano > li->v[j]->ano) swap(li,i,j);}
-            else if(tipo == 2) {if(strcmp(li->v[i]->marca, li->v[j]->marca)>0) swap(li,i,j);}
-            else if(tipo == 3) {if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0) swap(li,i,j);}
+            if(tipo == 0) {if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
+                Carro * temp = li->v[i];
+                li->v[i] = li->v[j];
+                li->v[j] = temp;  ;}}
+            else if(tipo == 1){if(li->v[i]->ano > li->v[j]->ano){ 
+                Carro * temp = li->v[i];
+                li->v[i] = li->v[j];
+                li->v[j] = temp;  ;}}
+            else if(tipo == 2) {if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
+                Carro * temp = li->v[i];
+                li->v[i] = li->v[j];
+                li->v[j] = temp;  ;}}
+            else if(tipo == 3) {if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
+                Carro * temp = li->v[i];
+                li->v[i] = li->v[j];
+                li->v[j] = temp;  ;}}
         }
 }
 }
