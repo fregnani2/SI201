@@ -1,6 +1,11 @@
 //Fazer em grupo de 3 alunos. Apenas um 
 //deve submeter o arquivo. O nome dos integrantes
 //deve estar junto no código fonte.
+/* GRUPO:
+Bruno Fregnani 254179
+Felipe Costa 254214
+João Rodrigo 254267
+*/
 #define ARR_SIZE(arr) ( sizeof((arr)) / sizeof((arr[0])) )
 #include <stdio.h>
 #include <time.h>
@@ -124,10 +129,6 @@ int main(int argc, const char * argv[]) {
     scanf("%d",&tipo);
     ordena(li,tipo);
     printLista(li);
-
- 
-    
-    
 }
 
 /** Gera um caracter aleatório entre 'A' e 'Z'
@@ -186,7 +187,7 @@ char * geraPlacaAleatoria(void){
         }
         else *(placa+i) = caracterAleatorio(); 
     }
-    *(placa+8) = "\0";
+    *(placa+8) = '\0';
     return placa;
 }
 
