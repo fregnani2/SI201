@@ -85,16 +85,15 @@ int main(int argc, const char * argv[]) {
      */
     srand((int)time(NULL));
 
-    if(debug)
-        testaCaracterAleatorio();
+   if(debug)
+    testaCaracterAleatorio();
 
-    /**
+     /**
      geração de placa aleatória
-     */
+      */
     char * placa = geraPlacaAleatoria();
     printf("%s\n",placa);
     free(placa);
-
 
     /**
      Criação de um carro.
@@ -103,21 +102,19 @@ int main(int argc, const char * argv[]) {
                              "Uno");
     printCarro(carro);
 
-    geraCarroAleatorio();
     /**
      impressão de carro aleatório
      */
-    
     printCarro(geraCarroAleatorio());
-    
 
-    /** criação de uma lista */
+      /** criação de uma lista */
     Lista * li = newLista();
-    for(int i=0;i<100;i++){
+    for(int i=0;i<15;i++){
         addLista(li, geraCarroAleatorio());
     }
-    
-    
+    printLista(li);
+
+
     printf("Ordenar por:\n");
     printf("Placa: 0 \n");
     printf("Ano: 1 \n");
@@ -129,7 +126,7 @@ int main(int argc, const char * argv[]) {
     scanf("%d",&tipo);
     ordena(li,tipo);
     printLista(li);
-}
+  }
 
 /** Gera um caracter aleatório entre 'A' e 'Z'
  Número de linhas esperado: 2
@@ -137,7 +134,8 @@ int main(int argc, const char * argv[]) {
 char caracterAleatorio(){
     char num = (rand() % 26 )+65;
     return num;
-}
+  }
+
 /**
  Esta função testa se o gerador de caracteres aleatórios
  está funcionando. O primeiro while gera caracteres
@@ -151,7 +149,6 @@ char caracterAleatorio(){
 void testaCaracterAleatorio(){
     //verifica a geração do 'A'
     while(caracterAleatorio()!='A'){
-        
     }
     printf("ok 1\n");
     //verifica a geração do 'Z'
@@ -213,14 +210,14 @@ Carro * geraCarroAleatorio(void){
     char *volkswagen[3] = {"onix","cruze","camaro"};
     int escolhaMarca = (rand() % 3);
     if(escolhaMarca == 0){
-        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[escolhaMarca],fiat[rand() % 3]);
+        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[0],fiat[rand() % 3]);
         return carro;
     }else if(escolhaMarca == 1){
-        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[escolhaMarca],chevrolet[rand() % 3]);
+        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[1],chevrolet[rand() % 3]);
         return carro;
     }
     else {
-        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[escolhaMarca],volkswagen[rand() % 3]);
+        Carro * carro = newCarro(geraPlacaAleatoria(), ano, marca[2],volkswagen[rand() % 3]);
         return carro;        
     }
 }
@@ -238,25 +235,26 @@ Carro * geraCarroAleatorio(void){
 void ordena(Lista *li,int tipo){
     for(int i=0;i<li->top;i++){
         for(int j = i+1;j<li->top;j++){
-            if(tipo == 0) {if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
+            if(tipo == 0) {
+              if(strcmp(li->v[i]->placa, li->v[j]->placa)>0){
                 Carro * temp = li->v[i];
                 li->v[i] = li->v[j];
                 li->v[j] = temp;  ;}}
-            else if(tipo == 1){if(li->v[i]->ano > li->v[j]->ano){ 
+            else if(tipo == 1){
+              if(li->v[i]->ano > li->v[j]->ano){ 
                 Carro * temp = li->v[i];
                 li->v[i] = li->v[j];
                 li->v[j] = temp;  ;}}
-            else if(tipo == 2) {if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
+            else if(tipo == 2) {
+              if(strcmp(li->v[i]->marca, li->v[j]->marca)>0){
                 Carro * temp = li->v[i];
                 li->v[i] = li->v[j];
                 li->v[j] = temp;  ;}}
-            else if(tipo == 3) {if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
+            else if(tipo == 3) {
+              if(strcmp(li->v[i]->modelo, li->v[j]->modelo)>0){
                 Carro * temp = li->v[i];
                 li->v[i] = li->v[j];
                 li->v[j] = temp;  ;}}
         }
 }
 }
-
-
-
