@@ -205,7 +205,9 @@ int maximoIt(No * no){
     }
     return aux->valor;
 }
-
+Lista * findAllKeys(No * raiz, int key){
+    
+}
 int main(int argc, const char * argv[]) {
     
     Tree * t = newTree();
