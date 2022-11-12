@@ -205,26 +205,62 @@ int maximoIt(No * no){
     }
     return aux->valor;
 }
+
+No * busca(No * raiz, int valor){
+    if(raiz == NULL){
+        return NULL;
+    }
+    if(raiz->valor == valor){
+        return raiz;
+    }
+    if(valor < raiz->valor){
+        return busca(raiz->esq,valor);
+    }else{
+        return busca(raiz->dir,valor);
+    }
+}
+
+//Tarefa 1
 Lista * findAllKeys(No * raiz, int key){
-    
+    Lista * l = newLista(100);
+    No * aux = raiz;
+    int counter = 0;
+    while(aux != NULL){
+        if(key == aux->valor){
+            addLista(l,key);
+        }
+        if(key <= aux->valor){
+            aux = aux->esq;
+        }
+        else{
+            aux = aux->dir;
+        }
+    }
+   return l;
 }
 int main(int argc, const char * argv[]) {
     
     Tree * t = newTree();
     
-    addTreeIt(t, 6);
-    addTreeIt(t, 8);
-    addTreeIt(t, 2);
-    addTreeIt(t, 10);
-    addTreeIt(t, 7);
-    addTreeIt(t, 1);
-    addTreeIt(t, 3);
+    addTree(t, 6);
+    addTree(t, 8);
+    addTree(t, 2);
+    addTree(t, 10);
+    addTree(t, 7);
+    addTree(t, 1);
+    addTree(t, 3);
+    addTree(t, 6);
+    addTree(t, 20);
+    addTree(t, 3);
+    addTree(t, 4);
+    addTree(t, 3);
     
     
-    
+
+    //printNo(busca(t->raiz,7));
     printTree(t);
-    
-    printTreeXML(t);
+    printLista(findAllKeys(t->raiz,6));
+    //printTreeXML(t);
     
     printf("Maximo %d\n",maximoIt(t->raiz));
      
