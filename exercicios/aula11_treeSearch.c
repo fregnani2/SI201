@@ -238,28 +238,53 @@ Lista * findAllKeys(No * raiz, int key){
     }
    return l;
 }
+
+//Tarefa 2
+int removeNode(Tree *t, int key){
+    No * aux = t->raiz;
+    while(aux->esq->valor != key){
+        if(key < aux->valor){
+            aux = aux->esq;
+        }
+        else if(key > aux->valor){
+            aux = aux->dir;
+        }
+    }
+    int valor = aux->esq->valor;
+    aux->esq = NULL;
+    return valor;
+}
 int main(int argc, const char * argv[]) {
     
     Tree * t = newTree();
     
-    addTree(t, 6);
-    addTree(t, 8);
-    addTree(t, 2);
-    addTree(t, 10);
-    addTree(t, 7);
-    addTree(t, 1);
-    addTree(t, 3);
-    addTree(t, 6);
-    addTree(t, 20);
-    addTree(t, 3);
-    addTree(t, 4);
-    addTree(t, 3);
+    // addTree(t, 6);
+    // addTree(t, 8);
+    // addTree(t, 2);
+    // addTree(t, 10);
+    // addTree(t, 7);
+    // addTree(t, 1);
+    // addTree(t, 3);
+    // addTree(t, 6);
+    // addTree(t, 20);
+    // addTree(t, 3);
+    // addTree(t, 4);
+    // addTree(t, 3);
+    // addTree(t, 6);
     
-    
+    addTree(t,20);
+    addTree(t,30);
+    addTree(t,40);
+    addTree(t,10);
+    addTree(t,15);
+    addTree(t,16);
+    addTree(t,5);
 
     //printNo(busca(t->raiz,7));
     printTree(t);
-    printLista(findAllKeys(t->raiz,6));
+    printf("%d",removeNode(t,5));
+    printTree(t);
+    //printLista(findAllKeys(t->raiz,6));
     //printTreeXML(t);
     
     printf("Maximo %d\n",maximoIt(t->raiz));
