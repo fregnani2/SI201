@@ -254,6 +254,16 @@ int removeNode(Tree *t, int key){
     aux->esq = NULL;
     return valor;
 }
+
+//Tarefa 5 - minimo it
+No * minimo(Tree * t){
+    No * raiz = t->raiz;
+    while(raiz->esq != NULL){
+        raiz = raiz->esq;
+    }
+    return raiz;
+}
+
 int main(int argc, const char * argv[]) {
     
     Tree * t = newTree();
@@ -280,6 +290,7 @@ int main(int argc, const char * argv[]) {
     addTree(t,16);
     addTree(t,5);
 
+    //printNo(minimo(t));
     //printNo(busca(t->raiz,7));
     printTree(t);
     printf("%d",removeNode(t,5));
