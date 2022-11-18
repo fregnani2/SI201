@@ -255,13 +255,21 @@ int removeNode(Tree *t, int key){
     return valor;
 }
 
-//Tarefa 5 - minimo it
+//Tarefa 5 - minimo iterativo
 No * minimo(Tree * t){
     No * raiz = t->raiz;
     while(raiz->esq != NULL){
         raiz = raiz->esq;
     }
     return raiz;
+}
+
+//Tarefa 5 - minimo recursivo
+No * minimoRec(No * raiz){
+    if(raiz->esq != NULL){
+        return minimoRec(raiz->esq);
+    }
+    else return raiz;
 }
 
 int main(int argc, const char * argv[]) {
@@ -289,8 +297,9 @@ int main(int argc, const char * argv[]) {
     addTree(t,15);
     addTree(t,16);
     addTree(t,5);
-
-    //printNo(minimo(t));
+    addTree(t,3);
+    
+    printNo(minimoRec(t->raiz));
     //printNo(busca(t->raiz,7));
     printTree(t);
     printf("%d",removeNode(t,5));
