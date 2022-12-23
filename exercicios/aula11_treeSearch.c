@@ -257,7 +257,7 @@ int removeNode(Tree *t, int key){
 
 //Tarefa 5 - minimo iterativo
 No * minimo(Tree * t){
-    if(raiz == NULL){
+    if(t->raiz == NULL){
         return;
     }
     No * raiz = t->raiz;
@@ -278,28 +278,41 @@ No * minimoRec(No * raiz){
     else return raiz;
 }
 
+
+void incrementa (No * raiz, int valor){
+   if(raiz != NULL){
+    raiz->valor += valor;
+    incrementa(raiz->esq,valor);
+    incrementa(raiz->dir,valor);
+   }
+}
+
+void incrementa2(No * node, int valor){
+    No * raiz = node;
+   if(raiz == NULL){
+    printf("Arvore Vazia");
+    exit(3);
+   }else{
+    incrementa(raiz->dir,valor);
+    incrementa(raiz->esq,valor);
+    raiz->valor = raiz->valor + valor;}
+}
 int main(int argc, const char * argv[]) {
     
     Tree * t = newTree();
-    
-    addTree(t,20);
-    addTree(t,30);
-    addTree(t,40);
-    addTree(t,10);
-    addTree(t,15);
-    addTree(t,16);
-    addTree(t,5);
-    addTree(t,3);
-    
-    printNo(minimoRec(t->raiz));
+    addTree(t,1);
+    addTree(t,6);
+    // printNo(minimoRec(t->raiz));
     //printNo(busca(t->raiz,7));
+    // printTree(t);
+    // printf("%d",removeNode(t,5));
     printTree(t);
-    printf("%d",removeNode(t,5));
+    incrementa2(t->raiz,10);
     printTree(t);
     //printLista(findAllKeys(t->raiz,6));
     //printTreeXML(t);
     
-    printf("Maximo %d\n",maximoIt(t->raiz));
+    // printf("Maximo %d\n",maximoIt(t->raiz));
      
      /*
     

@@ -18,6 +18,7 @@ No * newNo(int valor){
     aux->prox = NULL;
     return aux;
 }
+
 Lista * newLista(){
     Lista * aux  = (Lista *)malloc(sizeof(Lista));
     aux->ini = NULL;
@@ -269,6 +270,88 @@ void addOrdenado(Lista *li, int valor){
     }
 }
 
+Lista * multiplica(Lista * l1, Lista * l2){
+    int sizel1= 0;
+    int sizel2 = 0;
+    No * aux1 = l1->ini;
+    No * aux2 = l2->ini;
+    while(aux1->prox != NULL){
+        sizel1++;
+        aux1 = aux1->prox;
+    }
+    while(aux2->prox != NULL){
+        sizel2++;
+        aux2 = aux2->prox;
+    }
+    if(sizel1 != sizel2){
+        printf("Listas de tamanho diferentes");
+        return -1;
+    }
+    else{
+        Lista * l3 = newLista();
+        No * temp1 = l1->ini;
+        No * temp2 = l2->ini;
+        while (temp1 != NULL){
+            if(l3->ini == NULL){
+                l3->ini = newNo(temp1->valor * temp2->valor);
+                temp1 = temp1->prox;
+                temp2 = temp2->prox;
+            }else{
+                No * aux = l3->ini;
+                while(aux->prox!= NULL){
+                    aux = aux->prox;
+                }
+                aux->prox = newNo(temp1->valor * temp2->valor);
+                temp1 = temp1->prox;
+                temp2 = temp2->prox;
+            }
+        }
+        return l3;
+    }
+    
+}
+
+No * Quest1(No* l1, No * l2){
+    int sizeL1 = 0;
+    int sizeL2 = 0;
+    No * calcSize1 = l1;
+    No * calcSize2 = l2;
+    while (calcSize1->prox != NULL){
+        sizeL1++;
+        calcSize1 = calcSize1->prox;
+    }
+    while (calcSize2->prox != NULL){
+        sizeL2++;
+        calcSize2 = calcSize2->prox;
+    }    
+    if (sizeL1 != sizeL2){
+        printf("Listas de tamanhos diferentes");
+        exit(0);
+    }
+    else{
+    No * aux1 = l1;
+    No * aux2 = l2;
+    No * l3 = (No *)malloc(sizeof(No));
+    l3->valor = (l1->valor * l2->valor);
+    l3->prox = NULL;
+    aux1 = aux1->prox;
+    aux2 = aux2->prox;
+    while(aux1 != NULL){
+        No * temp = l3;
+        while(temp->prox != NULL){
+            temp = temp->prox;
+        }
+        No * ultimo = (No *)malloc(sizeof(No));
+        ultimo->valor = (aux1->valor * aux2->valor);
+        ultimo->prox = NULL;
+        temp->prox = ultimo;
+        aux1 = aux1->prox;
+        aux2 = aux2->prox;
+    }
+    return l3;
+    }
+}
+
 int main(){
     
     Lista * li = newLista();
@@ -276,22 +359,49 @@ int main(){
     addOrdenado(li,2);
     addOrdenado(li,3);
     addOrdenado(li,4);
-    addOrdenado(li,5);
 
-    print(li);
-    int pos = findFirstPosition(li,1);
-    printf("Posicao da primeira aparicao de K: %d\n",pos);
+    Lista * l2 = newLista();
+    addOrdenado(l2,1);
+    addOrdenado(l2,1);
+    addOrdenado(l2,3);
+    addOrdenado(l2,4);
+   
 
-    No * a = findPreviousNode(li,2);
-    printf("No anterior : %d\n",a->valor);
+
+    Lista * l3 = multiplica(li,l2);
+    print(l3);
+
+    // No * no1 = newNo(1);
+    // No * no2 = newNo(2);
+    // No * no3 = newNo(3);
+    // no1->prox = no2;
+    // no2->prox = no3;
+
+    // No * no4 = newNo(1);
     
-    printf("Remover chave k da lista : \n");
-    removeLista(li,3);
-    print(li);
+    // No * no5 = newNo(2);
+    // No * no6 = newNo(3);
+    // No * no7 = newNo(9);
+    // no4->prox = no5;
+    // no5->prox = no6;
+    // no6->prox = no7;
+
+    // No * result = Quest1(no1,no4);
+    // printf("%d",result->prox->prox->valor);
+    // print(li);
+    // int pos = findFirstPosition(li,1);
+    // printf("Posicao da primeira aparicao de K: %d\n",pos);
+
+    // No * a = findPreviousNode(li,2);
+    // printf("No anterior : %d\n",a->valor);
     
-    printf("Adicionar chave k em uma posicao n da lista: \n");
-    addPos(li,2,8);
-    print(li);
+    // printf("Remover chave k da lista : \n");
+    // removeLista(li,3);
+    // print(li);
+    
+    // printf("Adicionar chave k em uma posicao n da lista: \n");
+    // addPos(li,2,8);
+    // print(li);
 
 
 }

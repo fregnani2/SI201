@@ -84,7 +84,7 @@ No * newNo(int valor){
 
 void push(Pilha *p, int valor){
     No * no = newNo(valor);
-    no->prox = NULL;
+   
 
     No * ultimo = p->raiz;
 
